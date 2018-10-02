@@ -117,7 +117,7 @@ void show_board(Square board[][LONG], bool peg){
 }
 
 void place_ship(Square board[][LONG], SeaV ships[]){
-    char str[11] = "";
+    char str[11] = ""; //if bad input, print a few extra boards
 
     Location pos[5];
     bool Valid = false;
@@ -184,7 +184,7 @@ void update_board(Square board[][LONG], Location tango){
 }
 
 bool isSunk(int sunk[][NO_OF_SHIPS], int player, char ship_sym){
-    bool sank = false;
+    bool sank = false; //All does not show, maybe blink
 
     if(ship_sym == CARRIER){
         if(--sunk[player][0] == 0){
@@ -332,10 +332,10 @@ int main(void) {
     start_board(boardP1);
     start_board(boardP2);
 
-    printf("P1:\n");
+    printf("P1:\n"); //No print
     place_ship(boardP1, ships);
 
-    printf("P2:\n");
+    printf("P2:\n"); //No print
     place_ship(boardP2, ships);
 
     system("cls");
@@ -385,7 +385,7 @@ int main(void) {
         }
 
         if(shoot == 1){
-            printf("(%d, %d) HIT!\n", tango.row, tango.col);
+            printf("HIT!\n"); //blink
 
             players[player].no_of_hits++;
 
@@ -397,7 +397,7 @@ int main(void) {
 
             }
         }else{
-            puts("MISS!\n");
+            puts("MISS!\n"); //blink
 
         }
         if(player == 0){
@@ -409,7 +409,7 @@ int main(void) {
         }
 
         if(Win(players, player) == true){
-            printf("\nP%d wins!\n", player + 1);
+            printf("\nP%d wins!\n", player + 1); //program just closes, skips this
 
             break;
         }
@@ -420,7 +420,7 @@ int main(void) {
             player = 0;
         }
 
-        system("cls");
+        //system("cls");
 
     }
     return EXIT_SUCCESS;
