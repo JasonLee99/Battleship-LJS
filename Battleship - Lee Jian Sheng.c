@@ -189,31 +189,31 @@ bool isSunk(int sunk[][NO_OF_SHIPS], int player, char ship_sym){
     if(ship_sym == CARRIER){
         if(--sunk[player][0] == 0){
             printf("Player %d's carrier sank!\n", player + 1);
-            sank = true;
+            return sank = true;
 
         }
     }else if(ship_sym == BATTLESHIP){
         if(--sunk[player][1] == 0){
             printf("Player %d's battleship sank!\n", player + 1);
-            sank = true;
+            return sank = true;
 
         }
     }else if(ship_sym == CRUISER){
         if(--sunk[player][2] == 0){
             printf("Player %d's cruiser sank!\n", player + 1);
-            sank = true;
+            return sank = true;
 
         }
     }else if(ship_sym == SUBMARINE){
         if(--sunk[player][3] == 0){
             printf("Player %d's submarine destroyed!\n", player + 1);
-            sank = true;
+            return sank = true;
 
         }
     }else if(ship_sym == DESTROYER){
         if(--sunk[player][4] == 0){
             printf("Player %d's destroyer sank!\n", player + 1);
-            sank = true;
+            return sank = true;
 
         }
     }
@@ -392,7 +392,7 @@ int main(void) {
             if(player == 1){
                 hasSunk = isSunk(sunk, !player, ship_sym);
 
-            }else{
+            }else if(player == 0){
                 isSunk(sunk, !player, ship_sym);
 
             }
@@ -408,13 +408,17 @@ int main(void) {
 
         }
 
-        if(Win(players, player)){
+        if(Win(players, player) == true){
             printf("\nP%d wins!\n", player + 1);
 
             break;
         }
 
-        player = !player;
+        if(player == 0){
+            player = 1;
+        }else if(player == 1){
+            player = 0;
+        }
 
         system("cls");
 
