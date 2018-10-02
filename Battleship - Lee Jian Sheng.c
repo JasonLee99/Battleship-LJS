@@ -184,7 +184,7 @@ void update_board(Square board[][LONG], Location tango){
 }
 
 bool isSunk(int sunk[][NO_OF_SHIPS], int player, char ship_sym){
-    bool sank = false; //Less one hit already sink
+    bool sank = false;
 
     if(ship_sym == CARRIER){
         if(--sunk[player][0] == 0){
@@ -385,7 +385,7 @@ int main(void) {
         }
 
         if(shoot == 1){
-            printf("HIT!\n");
+            printf("\nHIT!\n");
 
             players[player].no_of_hits++;
 
@@ -397,7 +397,7 @@ int main(void) {
 
             }
         }else{
-            puts("MISS!\n");
+            puts("\nMISS!\n");
 
         }
         if(player == 0){
