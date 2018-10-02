@@ -184,7 +184,7 @@ void update_board(Square board[][LONG], Location tango){
 }
 
 bool isSunk(int sunk[][NO_OF_SHIPS], int player, char ship_sym){
-    bool sank = false; //All does not show, maybe blink
+    bool sank = false; //Less one hit already sink
 
     if(ship_sym == CARRIER){
         if(--sunk[player][0] == 0){
@@ -385,7 +385,7 @@ int main(void) {
         }
 
         if(shoot == 1){
-            printf("HIT!\n"); //blink
+            printf("HIT!\n");
 
             players[player].no_of_hits++;
 
@@ -397,7 +397,7 @@ int main(void) {
 
             }
         }else{
-            puts("MISS!\n"); //blink
+            puts("MISS!\n");
 
         }
         if(player == 0){
@@ -409,7 +409,7 @@ int main(void) {
         }
 
         if(Win(players, player) == true){
-            printf("\nP%d wins!\n", player + 1); //program just closes, skips this
+            printf("\nP%d wins!\n", player + 1);
 
             break;
         }
@@ -419,8 +419,7 @@ int main(void) {
         }else if(player == 1){
             player = 0;
         }
-
-        //system("cls");
+        printf("\n");
 
     }
     return EXIT_SUCCESS;
